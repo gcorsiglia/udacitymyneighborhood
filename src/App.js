@@ -5,13 +5,22 @@ import HeaderNav from './HeaderNav';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      venues: []
+    }
+  }
+
   componentDidMount() {
     this.getVenues();
   }
 
+  // Get venues with Foursquare API 
   getVenues() {
     
-    // Get venues with Foursquare API, set search param
+    // Set search param
     const endpoint = new URL('https://api.foursquare.com/v2/venues/explore?'),
       params = {
         client_id: 'D44WA1DU2RWYEEAKMRPLLYUX22001UY3EU3MQ1ZEADN433ZK',
@@ -21,25 +30,22 @@ class App extends Component {
         query: 'food'
     }
     
-    // Convert param into URL for fetch API
+    // Convert param into URL for Fetch API
     Object.keys(params)
       .forEach(key => endpoint.searchParams.append(key, params[key]));
     
     // Fetch Foursquare data
     fetch(endpoint)
       .then(response => response.json())
+        // Set state with response data
         .then(data => {
-          let venues = [];
-          const results = data.response.groups[0].items
+          const results = data.response.groups[0].items;
 
-          results.forEach(item => {
-            let name = item.venue.name;
-
-            console.log(name);
-          });
-
-          console.log('Scuccess! ' + results)
+          this.setState({
+            venues: results
+          })
         })
+        .catch(error => console.log(error));
   }
 
   render() {
@@ -48,7 +54,9 @@ class App extends Component {
         <HeaderNav />
 
         <main className="main">
-          <MapContainer />
+          <MapContainer 
+            venues={this.state.venues}
+          />
         </main>
     </div> 
 
