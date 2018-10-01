@@ -5,9 +5,12 @@ class HeaderNav extends Component {
   render() {
     return (
       <header className="header">
-        Port Townsend Places
-      </header>
+        <h1 className="title">Port Townsend Places</h1>
 
+        <nav className="nav">
+
+        </nav>
+      </header>
     );
   }
 }

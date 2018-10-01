@@ -1,6 +1,6 @@
 .App {
   font-family: 'Helevetica', Arial, sans-serif;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .header {
@@ -8,9 +8,22 @@
   width: 100vw;
   background: #1A535C;
   color: #F7FFF7;
+  margin: 0;
+  padding: 1rem;
+}
+
+.title {
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  text-align: right;
+}
+
+.main {
+  margin: 0;
 }
 
 #map {
-  height: calc(100vh - 100px);
+  height: 100vh;
   width: 100vw;
 }
