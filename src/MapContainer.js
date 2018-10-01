@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 function MapContainer(props) {
 
     return (
-      <div aria-role="application" id="map"></div>
-    );
+      <div role="application" id="map"></div>
+    )
+
 }
 
 export default MapContainer;

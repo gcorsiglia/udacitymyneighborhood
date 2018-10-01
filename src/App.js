@@ -14,37 +14,19 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.getVenues();
+  }
+
+  renderMap = () => {
     // Load Google Maps Script after component mounts
     loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAV1AdfYz-I6GLGa5tFsJV3mpnc8pVeiVY&callback=initMap');
 
     // Connect initMap() to global window so Maps API can use it
     window.initMap = this.initMap;
-
-    this.getVenues();
-  }
-
-  initMap() {
-    // Create map
-    const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: {lat: 48.115501, lng: -122.775156},
-      zoom: 13
-    });
-
-    // Create markers
-    this.state.venues.map(venueItem => {
-      let marker = new window.google.maps.Marker({
-        position: {
-          lat: venueItem.venue.location.lat, 
-          lng: venueItem.venue.location.lng
-        },
-        map: map
-      })
-    })  
   }
 
   // Get venues with Foursquare API 
-  getVenues() {
-    
+  getVenues = () => {
     // Set search param
     const endpoint = new URL('https://api.foursquare.com/v2/venues/explore?'),
       params = {
@@ -68,9 +50,28 @@ class App extends Component {
 
           this.setState({
             venues: results
-          })
+          }, this.renderMap())
         })
         .catch(error => console.log(error));
+  }
+
+  initMap = () => {
+    // Create map
+    const map = new window.google.maps.Map(document.getElementById('map'), {
+      center: {lat: 48.115501, lng: -122.775156},
+      zoom: 13
+    });
+
+    // Create markers
+    this.state.venues.map(venueItem => {
+      new window.google.maps.Marker({
+        position: {
+          lat: venueItem.venue.location.lat, 
+          lng: venueItem.venue.location.lng
+        },
+        map: map
+      })
+    })  
   }
 
   render() {
