@@ -58,11 +58,11 @@ class MapContainer extends Component {
     // Create marker and infowindow for each item in venues list
     this.props.venues.forEach(venueItem => {
       
-      const contentString = `<div class="venue-details-content" id="venueContent">
-        <h3 class="venue-name" id="venueName">${venueItem.venue.name}</h3>
-        <p class="venue-address">${venueItem.venue.location.formattedAddress[0]}</p>
-        <p class="venue-address">${venueItem.venue.location.formattedAddress[1]}</p>
-        <div class="venue-details-body">
+      const contentString = `<div class="iw-venue-details-content">
+        <h3 class="iw-venue-name">${venueItem.venue.name}</h3>
+        <p class="iw-venue-address">${venueItem.venue.location.formattedAddress[0]}</p>
+        <p class="iw-venue-address">${venueItem.venue.location.formattedAddress[1]}</p>
+        <div class="iw-venue-details-body">
           <p>${venueItem.venue.categories[0].name}</p>
         </div>
       </div>`
