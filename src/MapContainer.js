@@ -43,7 +43,7 @@ class MapContainer extends Component {
             venues: results
           }, this.renderMap()) // Render map only after venues are loaded
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log('Foursquare API error! ', error));
   }
 
   initMap = () => {
@@ -55,16 +55,16 @@ class MapContainer extends Component {
 
     const infowindow = new window.google.maps.InfoWindow();
     
-    // Infowindow content and markers
+    // Create marker and infowindow for each item in venues list
     this.props.venues.forEach(venueItem => {
+      
       const contentString = `<div class="venue-details-content" id="venueContent">
-        <h2 class="venue-name" id="venueName">${venueItem.venue.name}</h2>
+        <h3 class="venue-name" id="venueName">${venueItem.venue.name}</h3>
         <p class="venue-address">${venueItem.venue.location.formattedAddress[0]}</p>
         <p class="venue-address">${venueItem.venue.location.formattedAddress[1]}</p>
         <div class="venue-details-body">
           <p>${venueItem.venue.categories[0].name}</p>
         </div>
-
       </div>`
 
       const marker = new window.google.maps.Marker({
@@ -84,6 +84,8 @@ class MapContainer extends Component {
 
       this.props.addMarker(marker);
     });
+
+    
   }
 
   // Insert Google Maps API script into DOM
@@ -113,7 +115,11 @@ class MapContainer extends Component {
 
   render() {
     return (
-      <div role="application" id="map"></div>
+      <section id="mapContainer">
+        <div id="map" role="application" aria-labelledby="aria-map-description"></div>
+
+        <label id="aria-map-description" className="hide-element">Google Maps application</label>
+      </section>
     )
   }
 }
