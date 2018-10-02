@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import MapContainer from './MapContainer';
 import HeaderNav from './HeaderNav';
+import SideBar from './SideBar';
 
 class App extends Component {
 
@@ -27,11 +28,25 @@ class App extends Component {
   }
 
   render() {
+
+    let sidebar;
+
+    if (this.state.sidebarIsOpen) {
+      sidebar = 
+        <SideBar
+          venues={this.state.venues}
+          query={this.state.query}
+          markers={this.state.markers}  
+        />
+    }
+
     return (
       <div className="App">
         <HeaderNav />
 
         <main className="main">
+          {sidebar}
+          
           <MapContainer
             venues={this.state.venues}
             query={this.state.query}
