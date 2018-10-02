@@ -3,10 +3,6 @@ import VenueCard from './VenueCard';
 
 class SideBar extends Component {
 
-	constructor(props) {
-    super(props);
-  }
-
   render() {
 		
     return (
@@ -16,7 +12,7 @@ class SideBar extends Component {
     			<button className="info-button" id="infoButton">About PTWA</button>
 
     			<input 
-    				class="input" 
+    				className="input" 
     				id="filterInput" 
     				name="filter" 
     				placeholder="Search for places in Port Townsend" 
@@ -32,9 +28,9 @@ class SideBar extends Component {
 						{
 							this.props.venues.map((venueItem) => {
 								return (
-									<li id={venueItem.venue.id}>
+									<li key={venueItem.venue.id}>
 										<VenueCard 
-											venue={venueItem}
+											venueDetails={venueItem}
 										/>
 									</li>
 								)
