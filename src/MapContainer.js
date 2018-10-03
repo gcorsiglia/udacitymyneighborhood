@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 
 class MapContainer extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      markers: []
-    }
-  }
-
   componentDidMount() {
     this.getVenues();
   }
@@ -18,13 +10,14 @@ class MapContainer extends Component {
   getVenues = () => {
     
     // Set search param
-    const endpoint = new URL('https://api.foursquare.com/v2/venues/explore?'),
-      params = {
-        client_id: 'D44WA1DU2RWYEEAKMRPLLYUX22001UY3EU3MQ1ZEADN433ZK',
-        client_secret: '3WK2RKHNWYOPX5CLRFRUFWTLY5Y31A2Q3EIXE1ES1EXDTFAK',
-        v: '20180323',
-        near: 'Port Townsend, WA',
-        query: 'food'
+    const endpoint = new URL('https://api.foursquare.com/v2/venues/explore?')
+    
+    const params = {
+      client_id: 'D44WA1DU2RWYEEAKMRPLLYUX22001UY3EU3MQ1ZEADN433ZK',
+      client_secret: '3WK2RKHNWYOPX5CLRFRUFWTLY5Y31A2Q3EIXE1ES1EXDTFAK',
+      v: '20180323',
+      near: 'Port Townsend, WA',
+      query: 'food'
     }
     
     // Convert params into URL for Fetch API

@@ -11,7 +11,7 @@ class App extends Component {
 
     this.state = {
       venues: [], 
-      sidebarIsOpen: false,
+      sidebarIsOpen: true,
       query: '',
       markers: []
     }
@@ -28,9 +28,9 @@ class App extends Component {
   }
 
   render() {
-
+    
+    // Check state of sidebar before rendering
     let sidebar;
-
     if (this.state.sidebarIsOpen) {
       sidebar = 
         <SideBar
@@ -42,7 +42,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <HeaderNav />
+        <HeaderNav 
+          sidebarIsOpen={this.state.sidebarIsOpen}
+        />
 
         <main className="main">
           {sidebar}
@@ -50,6 +52,7 @@ class App extends Component {
           <MapContainer
             venues={this.state.venues}
             query={this.state.query}
+            markers={this.state.markers}
             newVenues={this.newVenues}
             addMarker={this.addMarker}
           />
