@@ -4,6 +4,11 @@ import MapContainer from './MapContainer';
 import HeaderNav from './HeaderNav';
 import SideBar from './SideBar';
 
+// Font Awesome Icons
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+library.add(faSearch, faBars, faTimes);
+
 class App extends Component {
 
   constructor(props) {
@@ -11,7 +16,7 @@ class App extends Component {
 
     this.state = {
       venues: [], 
-      sidebarIsOpen: true,
+      sidebarIsOpen: false,
       query: '',
       markers: []
     }
@@ -32,6 +37,12 @@ class App extends Component {
     this.setState({ query: input });
   }
 
+  toggleSidebar = () => {
+    this.setState((prevState) => {
+      return { sidebarIsOpen: !prevState.sidebarIsOpen }
+    })
+  }
+
   render() {
     
     // Check state of sidebar before rendering
@@ -50,6 +61,7 @@ class App extends Component {
       <div className="App">
         <HeaderNav 
           sidebarIsOpen={this.state.sidebarIsOpen}
+          toggleSidebar={this.toggleSidebar}
         />
 
         <main className="main">
