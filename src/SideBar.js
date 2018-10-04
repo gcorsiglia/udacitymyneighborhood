@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import VenueCard from './VenueCard';
-import searchImg from './assets/search.png';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SideBar extends Component {
 
@@ -69,7 +70,13 @@ class SideBar extends Component {
 	    			/>
 	    			<label id="aria-input-description" className="hide-element">Search for places in Port Townsend</label>
 
-	    			<button className="filter-button" id="filterButton" type="submit" title="filter"><img src={searchImg} width="30" /></button>
+	    			<button className="filter-button" id="filterButton" type="submit" title="filter">
+							<FontAwesomeIcon
+						    icon="search"
+						    className="icon"
+						    size="lg"
+						  />
+	    			</button>
 	    		</form>
     		</div>
 
