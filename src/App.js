@@ -17,17 +17,17 @@ class App extends Component {
     }
   }
   
-  // Update venues list from props
+  // Update venues state with props from child
   newVenues = (venues) => {
     this.setState({ venues });
   }
 
-  // Push new marker to state from props
+  // Push new marker to state with props from child
   addMarker = (marker) => {
     this.state.markers.push(marker);
   }
 
-  //
+  // Update query state with props from child
   filterQuery = (input) => {
     this.setState({ query: input });
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import VenueCard from './VenueCard';
+import searchImg from './assets/search.png';
 
 class SideBar extends Component {
 
@@ -61,17 +62,14 @@ class SideBar extends Component {
 	    				id="filterInput" 
 	    				name="filter" 
 	    				placeholder="Search for places in Port Townsend" 
-	    				title="Filter" 
+	    				title="Filter"
 	    				type="text"
-	    				aria-label="Search for places in Port Townsend"
+	    				aria-labelledby="aria-input-description"
 	    				onChange={this.handleType}
 	    			/>
+	    			<label id="aria-input-description" className="hide-element">Search for places in Port Townsend</label>
 
-	    			<input
-	    				type="submit"
-	    				role="role"
-	    				value="Filter"
-	    			/>
+	    			<button className="filter-button" id="filterButton" type="submit" title="filter"><img src={searchImg} width="30" /></button>
 	    		</form>
     		</div>
 

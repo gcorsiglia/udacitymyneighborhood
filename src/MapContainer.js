@@ -2,25 +2,23 @@ import React, { Component } from 'react';
 
 class MapContainer extends Component {
   
-  // Get venues based on query state
+  // Get venues based on query
   componentDidMount() {
     this.getVenues(this.props.query);
   }
   
-  //
+  // Update venues with new query
   componentDidUpdate(prev) {
     if (prev.query !== this.props.query) {
       this.getVenues(this.props.query);
     }
   }
 
-  
   // Get venues with Foursquare API 
   getVenues = (query) => {
     
     // Set search param
     const endpoint = new URL('https://api.foursquare.com/v2/venues/explore?')
-    
     const params = {
       client_id: 'D44WA1DU2RWYEEAKMRPLLYUX22001UY3EU3MQ1ZEADN433ZK',
       client_secret: '3WK2RKHNWYOPX5CLRFRUFWTLY5Y31A2Q3EIXE1ES1EXDTFAK',
@@ -39,8 +37,9 @@ class MapContainer extends Component {
         // Set state with response data
         .then(data => {
           const results = data.response.groups[0].items;
+          
           this.props.newVenues(results);
-
+          
           this.setState({
             venues: results
           }, this.renderMap()) // Render map only after venues are loaded
@@ -60,14 +59,15 @@ class MapContainer extends Component {
     // Create marker and infowindow for each item in venues list
     this.props.venues.forEach(venueItem => {
       
-      const contentString = `<div class="iw-venue-details-content">
-        <h3 class="iw-venue-name">${venueItem.venue.name}</h3>
-        <p class="iw-venue-address">${venueItem.venue.location.formattedAddress[0]}</p>
-        <p class="iw-venue-address">${venueItem.venue.location.formattedAddress[1]}</p>
-        <div class="iw-venue-details-body">
-          <p>${venueItem.venue.categories[0].name}</p>
-        </div>
-      </div>`
+      const contentString = 
+        `<div class="iw-venue-details-content">
+          <h3 class="iw-venue-name">${venueItem.venue.name}</h3>
+          <p class="iw-venue-address">${venueItem.venue.location.formattedAddress[0]}</p>
+          <p class="iw-venue-address">${venueItem.venue.location.formattedAddress[1]}</p>
+          <div class="iw-venue-details-body">
+            <p>${venueItem.venue.categories[0].name}</p>
+          </div>
+        </div>`
 
       const marker = new window.google.maps.Marker({
         position: {
@@ -85,9 +85,7 @@ class MapContainer extends Component {
       })
 
       this.props.addMarker(marker);
-    });
-
-    
+    });   
   }
 
   // Insert Google Maps API script into DOM
@@ -108,7 +106,6 @@ class MapContainer extends Component {
 
   renderMap = () => {
     if (typeof google === 'undefined') {
-      // Call loadScript to insert src link
       this.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAV1AdfYz-I6GLGa5tFsJV3mpnc8pVeiVY&callback=initMap');
     } else {
       this.initMap()
