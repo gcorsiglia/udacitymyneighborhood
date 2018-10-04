@@ -27,6 +27,11 @@ class App extends Component {
     this.state.markers.push(marker);
   }
 
+  //
+  filterQuery = (input) => {
+    this.setState({ query: input });
+  }
+
   render() {
     
     // Check state of sidebar before rendering
@@ -36,7 +41,8 @@ class App extends Component {
         <SideBar
           venues={this.state.venues}
           query={this.state.query}
-          markers={this.state.markers}  
+          markers={this.state.markers}
+          filter={this.filterQuery}
         />
     }
 
