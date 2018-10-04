@@ -12,7 +12,7 @@ body {
 
 .header {
   height: 100px;
-  width: 100%;
+  width: 100vw;
   background: #1A535C;
   color: #F7FFF7;
   margin: 0;
@@ -60,6 +60,10 @@ body {
 .header {}
 
 .sidebar {}
+
+.venue-list {}
+
+.venue-item {}
 
 .venue-card {}
 
