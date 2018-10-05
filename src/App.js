@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import MapContainer from './MapContainer';
 import HeaderNav from './HeaderNav';
 import SideBar from './SideBar';
@@ -75,6 +76,11 @@ class App extends Component {
             addMarker={this.addMarker}
           />
         </main>
+        <footer className="footer">
+          <p>PT PLACES</p>
+          <p>© 2018 Gina L. Corsiglia</p>
+          
+        </footer>
     </div> 
 
     );
