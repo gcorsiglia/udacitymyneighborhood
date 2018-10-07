@@ -18,42 +18,22 @@ class SideBar extends Component {
 	
   handleType = (e) => {
   	this.setState({ inputValue: e.target.value });
+
+  	this.props.filter(this.state.inputValue);
   }
 	
 	// Send inputValue state to app
   handleSearch = (e) => {
 		e.preventDefault();
   	
-  	this.props.filter(this.state.inputValue);
+  	
   }
 	
-	/* This gets passed to each list item
-	value={this.props.query} onChange={(e) => { this.props.filterVenues(e.target.value) }} 
-	
-	This is the main function. Lives in App.js? OR Sidebar?
-	filterVenues(query) {
-    let f = query ? this.venues.filter(v => v.name.toLowerCase().includes(query)) : this.venues;
-    this.markers.forEach(m => {
-      m.name.toLowerCase().includes(query) ?
-      m.setVisible(true) :
-      m.setVisible(false);
-    });
-    this.setState({ filtered: f, query: query });
-  }
-	
-	This allows for state to be changed via props. Lives in App.js.
-  venueTypeFilter = (input) => {
-    this.setState({
-      filterQuery: input
-    })
-  }
-  */
-
   render() {
 		
     return (
 
-    	<section id="sidebar" className="sidebar">
+    	<section id="sidebar" className="sidebar" style={{ display: this.props.displaySidebar }}>
     		<div className="sidebar-upper">
     			
     			<button className="info-button" id="infoButton">About PTWA</button>

@@ -64,9 +64,6 @@ class MapContainer extends Component {
           <h3 class="iw-venue-name">${venueItem.venue.name}</h3>
           <p class="iw-venue-address">${venueItem.venue.location.formattedAddress[0]}</p>
           <p class="iw-venue-address">${venueItem.venue.location.formattedAddress[1]}</p>
-          <div class="iw-venue-details-body">
-            <p>${venueItem.venue.categories[0].name}</p>
-          </div>
         </div>`
 
       const marker = new window.google.maps.Marker({

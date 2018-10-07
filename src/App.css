@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,800|Raleway:400,700');
 
+body {
+  overflow: hidden;
+}
+
 html,
 body {
   height: 100%;
@@ -41,13 +45,12 @@ body {
 /* MAIN */
 .main {
   margin: 0;
-  display: flex;
-  flex-direction: row;
 }
 
-/* MAP, MARKERS, INFOWINDOW */
+/* MAP + INFOWINDOW */
 #map {
   height: 100vh;
+  max-height: 100%;
   width: 100vw;
 }
 
@@ -59,32 +62,78 @@ body {
 
 .iw-venue-address {}
 
-.iw-venue-details-body {
-  font-size: 0.8rem;
-  font-style: italic;
-}
-
 /* SIDEBAR + VENUE LIST */
 .sidebar {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 350px;
+  width: 300px;
+  max-width: 100%;
+  padding: 1rem;
+  height: calc(100% - 50px);
+  overflow-y: auto;
+  z-index: 10;
+  background: #F7FFF7;
+  margin-bottom: 50px;
 }
 
-.venue-list {}
+.venue-list {
+  margin: auto;
+}
 
 .venue-item {}
 
-.venue-card {}
+.venue-card {
+  background: #4ECDC4;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+}
 
-.vc-name {}
+.venue-card:first-child {
+  margin-top: 1rem;
+}
 
-.vc-address {}
+.vc-name {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
 
-.vc-details-body {}
+.vc-category {
+  font-style: italic;
+  padding-bottom: 0.7rem;
+}
+
+.vc-image-container {
+  width: 268px;
+}
+
+.vc-image {
+  width: 100%;
+  height: auto;
+}
+
+.vc-address {
+
+}
 
 .filter-button {}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  background: #1A535C;
+  width: 100%;
+  height: 50px;
+  color: #F7FFF7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
 
 .hide-element {
   border: 0;
@@ -96,4 +145,9 @@ body {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.box-shadow {
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.14), 
+              4px 4px 12px 0 rgba(0, 0, 0, 0.12);
 }

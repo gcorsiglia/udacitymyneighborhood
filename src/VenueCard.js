@@ -8,7 +8,7 @@ class VenueCard extends Component {
     const baseStreetview = 'https://maps.googleapis.com/maps/api/streetview?'
     
     const params = {
-      size: '200x200',
+      size: '268x150',
       location: `${this.props.venueDetails.venue.location.lat},${this.props.venueDetails.venue.location.lng}`,
       key: 'AIzaSyAV1AdfYz-I6GLGa5tFsJV3mpnc8pVeiVY',
       pitch: '-0.76',
@@ -27,17 +27,25 @@ class VenueCard extends Component {
 		const { venueDetails } = this.props;
 
     return (
-    	<div className="venue-card">
+    	<div className="venue-card box-shadow">
     		<h2 className="vc-name">{venueDetails.venue.name}</h2>
-    		<p className="vc-address">{venueDetails.venue.location.formattedAddress[0]}</p>
-        <p className="vc-address">{venueDetails.venue.location.formattedAddress[1]}</p>
-        <div className="vc-details-body">
-          <p>{venueDetails.venue.categories[0].name}</p>
-          <img 
-          	src={this.getStreetviewImage(venueDetails)}
-          	alt={venueDetails.venue.name}
-          />
-        </div>	
+    		
+    		<p className="vc-category">{venueDetails.venue.categories[0].name}</p>
+    		
+				<div className="vc-image-container">
+	    		<img 
+	        	src={this.getStreetviewImage(venueDetails)}
+	         	alt={venueDetails.venue.name}
+	         	className="vc-image"
+	         />
+    		</div>
+					
+					<div className="vc-address">
+	    			<p className="vc-address-street">{venueDetails.venue.location.formattedAddress[0]}</p>
+	        	<p>{venueDetails.venue.location.formattedAddress[1]}</p>
+	        </div>
+	        
+	        <p>{venueDetails.venue.hereNow.summary}</p>	
       </div>
     );
   }

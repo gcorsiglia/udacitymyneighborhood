@@ -46,17 +46,7 @@ class App extends Component {
 
   render() {
     
-    // Check state of sidebar before rendering
-    let sidebar;
-    if (this.state.sidebarIsOpen) {
-      sidebar = 
-        <SideBar
-          venues={this.state.venues}
-          query={this.state.query}
-          markers={this.state.markers}
-          filter={this.filterQuery}
-        />
-    }
+    let displaySidebar = this.state.sidebarIsOpen ? "block" : "none";
 
     return (
       <div className="App">
@@ -66,7 +56,13 @@ class App extends Component {
         />
 
         <main className="main">
-          {sidebar}
+          <SideBar
+            venues={this.state.venues}
+            query={this.state.query}
+            markers={this.state.markers}
+            filter={this.filterQuery}
+            displaySidebar={displaySidebar}
+          />
           
           <MapContainer
             venues={this.state.venues}
