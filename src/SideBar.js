@@ -9,26 +9,48 @@ class SideBar extends Component {
     super(props);
 
     this.state = {
-      inputValue: ''
+      inputValue: '',
+      filterResults: []
     }
-		
-		this.handleType = this.handleType.bind(this);
-		this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  updateQuery = (query) => {
+  	this.setState({ inputValue: query });
+  	this.props.filter(this.state.inputValue);
+  	this.updateFilterResults(query);
+  }
+
+  updateFilterResults = (query) => {
+  	if(query) {
+  		this.setState({ filterResults })
+		} else {
+			this.setState({ filterResults: [] })
+		}
   }
 	
+	/*
   handleType = (e) => {
   	this.setState({ inputValue: e.target.value });
 
   	this.props.filter(this.state.inputValue);
   }
-	
-	// Send inputValue state to app
-  handleSearch = (e) => {
-		e.preventDefault();
-  	
-  	
+
+  updateSearchResults(query) {
+  	if(query) {
   }
-	
+
+
+  filterVenues(query) {
+    let f = query ? this.venues.filter(v => v.name.toLowerCase().includes(query)) : this.venues;
+    this.markers.forEach(m => {
+      m.name.toLowerCase().includes(query) ?
+      m.setVisible(true) :
+      m.setVisible(false);
+    });
+    this.setState({ filtered: f, query: query });
+  }
+  */
+
   render() {
 		
     return (
@@ -37,7 +59,7 @@ class SideBar extends Component {
     		<div className="sidebar-upper">
     			
     			<button className="info-button" id="infoButton">About PTWA</button>
-					<form onSubmit={this.handleSearch}>
+					<form>
 	    			<input 
 	    				className="input" 
 	    				id="filterInput" 
@@ -46,7 +68,7 @@ class SideBar extends Component {
 	    				title="Filter"
 	    				type="text"
 	    				aria-labelledby="aria-input-description"
-	    				onChange={this.handleType}
+	    				onChange={(event) => this.updateQuery(event.target.value)}
 	    			/>
 	    			<label id="aria-input-description" className="hide-element">Search for places in Port Townsend</label>
 
@@ -62,14 +84,13 @@ class SideBar extends Component {
 
     		<div className="venues-list" id="venuesList">
     			<ul className="venue-list">
-						{
-							this.props.venues.map((venueItem) => {
-								return (
-									<li key={venueItem.venue.id} className="list-item">
-										<VenueCard 
-											venueDetails={venueItem}
-										/>
-									</li>
+						{this.state.inputValue && this.state.filterResults.map((resultVenue) => {
+							return (
+								<li key={resultVenue.venue.id} className="list-item">
+									<VenueCard 
+										venueDetails={resultVenue}
+									/>
+								</li>
 								)
 							})
 						}
