@@ -4,18 +4,11 @@ class MapContainer extends Component {
   
   // Get venues based on query
   componentDidMount() {
-    this.getVenues(this.props.query);
+    this.getVenues();
   }
   
-  // Update venues with new query
-  componentDidUpdate(prev) {
-    if (prev.query !== this.props.query) {
-      this.getVenues(this.props.query);
-    }
-  }
-
   // Get venues with Foursquare API 
-  getVenues = (query) => {
+  getVenues = () => {
     
     // Set search param
     const endpoint = new URL('https://api.foursquare.com/v2/venues/explore?')
@@ -23,8 +16,7 @@ class MapContainer extends Component {
       client_id: 'D44WA1DU2RWYEEAKMRPLLYUX22001UY3EU3MQ1ZEADN433ZK',
       client_secret: '3WK2RKHNWYOPX5CLRFRUFWTLY5Y31A2Q3EIXE1ES1EXDTFAK',
       v: '20180323',
-      near: 'Port Townsend, WA',
-      query: query
+      near: 'Port Townsend, WA'
     }
     
     // Convert params into URL for Fetch API

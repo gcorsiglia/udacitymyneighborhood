@@ -9,47 +9,25 @@ class SideBar extends Component {
     super(props);
 
     this.state = {
-      inputValue: '',
-      filterResults: []
+      query: ''
     }
   }
 
-  updateQuery = (query) => {
-  	this.setState({ inputValue: query });
-  	this.props.filter(this.state.inputValue);
-  	this.updateFilterResults(query);
-  }
+  handleChange = (query) => {
+    this.setState({ query });
+    
+    this.props.venues.map((v) => {
+      const isMatched = v.venue.name.toLowerCase().includes(query.toLowerCase());
 
-  updateFilterResults = (query) => {
-  	if(query) {
-  		this.setState({ filterResults })
-		} else {
-			this.setState({ filterResults: [] })
-		}
-  }
-	
-	/*
-  handleType = (e) => {
-  	this.setState({ inputValue: e.target.value });
+      const marker = this.props.markers.find(marker => marker.id === v.venue.id);
 
-  	this.props.filter(this.state.inputValue);
-  }
-
-  updateSearchResults(query) {
-  	if(query) {
-  }
-
-
-  filterVenues(query) {
-    let f = query ? this.venues.filter(v => v.name.toLowerCase().includes(query)) : this.venues;
-    this.markers.forEach(m => {
-      m.name.toLowerCase().includes(query) ?
-      m.setVisible(true) :
-      m.setVisible(false);
+      if (isMatched) {
+        marker.isVisible = true;
+      } else {
+        marker.isVisible = false;
+      }
     });
-    this.setState({ filtered: f, query: query });
   }
-  */
 
   render() {
 		
@@ -65,10 +43,10 @@ class SideBar extends Component {
 	    				id="filterInput" 
 	    				name="filter" 
 	    				placeholder="Search for places in Port Townsend" 
-	    				title="Filter"
+	    				title="search"
 	    				type="text"
 	    				aria-labelledby="aria-input-description"
-	    				onChange={(event) => this.updateQuery(event.target.value)}
+	    				onChange={(event) => this.handleChange(event.target.value)}
 	    			/>
 	    			<label id="aria-input-description" className="hide-element">Search for places in Port Townsend</label>
 
@@ -84,11 +62,11 @@ class SideBar extends Component {
 
     		<div className="venues-list" id="venuesList">
     			<ul className="venue-list">
-						{this.state.inputValue && this.state.filterResults.map((resultVenue) => {
+						{this.props.venues.map((venueItem) => {
 							return (
-								<li key={resultVenue.venue.id} className="list-item">
+								<li key={venueItem.venue.id} className="list-item">
 									<VenueCard 
-										venueDetails={resultVenue}
+										venueDetails={venueItem}
 									/>
 								</li>
 								)

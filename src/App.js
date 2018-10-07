@@ -18,7 +18,6 @@ class App extends Component {
     this.state = {
       venues: [], 
       sidebarIsOpen: false,
-      query: '',
       markers: []
     }
   }
@@ -32,11 +31,13 @@ class App extends Component {
   addMarker = (marker) => {
     this.state.markers.push(marker);
   }
-
+  
+  /*
   // Update query state with props from child
   filterQuery = (input) => {
     this.setState({ query: input });
   }
+  */
 
   toggleSidebar = () => {
     this.setState((prevState) => {
@@ -58,15 +59,14 @@ class App extends Component {
         <main className="main">
           <SideBar
             venues={this.state.venues}
-            query={this.state.query}
             markers={this.state.markers}
             filter={this.filterQuery}
             displaySidebar={displaySidebar}
+            filterQuery={this.filterQuery}
           />
           
           <MapContainer
             venues={this.state.venues}
-            query={this.state.query}
             markers={this.state.markers}
             newVenues={this.newVenues}
             addMarker={this.addMarker}
