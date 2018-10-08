@@ -9,7 +9,8 @@ class SideBar extends Component {
     super(props);
 
     this.state = {
-      query: ''
+      query: '',
+      searchResults: []
     }
   }
 
@@ -29,6 +30,17 @@ class SideBar extends Component {
 
       return marker;
     });
+
+    this.updateResults(query);
+  }
+
+  updateResults = (query) => {
+    if (query) {
+      const searchResults = this.props.venues.filter((v) => v.venue.name.toLowerCase().includes(query.toLowerCase()));
+      this.setState({ searchResults })
+    } else {
+      this.setState({ searchResults: [] })
+    }
   }
 
   render() {
@@ -43,7 +55,7 @@ class SideBar extends Component {
 	    			<input 
 	    				className="input" 
 	    				id="filterInput" 
-	    				name="filter" 
+	    				name="search" 
 	    				placeholder="Search for places in Port Townsend" 
 	    				title="search"
 	    				type="text"
@@ -64,7 +76,7 @@ class SideBar extends Component {
 
     		<div className="venues-list" id="venuesList">
     			<ul className="venue-list">
-						{this.props.venues.map((venueItem) => {
+						{this.state.query && this.state.searchResults.map((venueItem) => {
 							return (
 								<li key={venueItem.venue.id} className="list-item">
 									<VenueCard 

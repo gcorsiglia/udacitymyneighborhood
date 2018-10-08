@@ -31,13 +31,6 @@ class App extends Component {
   addMarker = (marker) => {
     this.state.markers.push(marker);
   }
-  
-  /*
-  // Update query state with props from child
-  filterQuery = (input) => {
-    this.setState({ query: input });
-  }
-  */
 
   toggleSidebar = () => {
     this.setState((prevState) => {
