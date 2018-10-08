@@ -53,21 +53,24 @@ class SideBar extends Component {
 
     	<section id="sidebar" className="sidebar" style={{ display: this.props.displaySidebar }}>
     		<div className="sidebar-upper">
+          <div className="sidebar-about">
+            <p>Port Townsend is a historic town on the tip of the Olympic Peninsula in Washington State.</p>
+            <p>Click the button to learn more about this Victorian city by the sea. Or use the search field to explore the places of PT.</p>
+          </div>
     			
-    			<button className="info-button" id="infoButton">About PTWA</button>
-					<form>
-	    			<input 
-	    				className="input" 
-	    				id="filterInput" 
-	    				name="search" 
-	    				placeholder="Search for places in Port Townsend" 
-	    				title="search"
-	    				type="text"
-	    				aria-labelledby="aria-input-description"
-	    				onChange={(event) => this.filterVenues(event.target.value)}
+    			<button className="info-button" id="infoButton">About PT</button>
+			
+	    		<input 
+	    			className="input" 
+	    			id="filterInput" 
+	    			name="search" 
+	    			placeholder="Search for places in Port Townsend" 
+	    			title="search"
+	    			type="text"
+	    			aria-labelledby="aria-input-description"
+	    			onChange={(event) => this.filterVenues(event.target.value)}
 	    			/>
-	    			<label id="aria-input-description" className="hide-element">Search for places in Port Townsend</label>
-	    		</form>
+	    		<label id="aria-input-description" className="hide-element">Search for places in Port Townsend, WA</label>
     		</div>
 
     		<div className="venues-list" id="venuesList">

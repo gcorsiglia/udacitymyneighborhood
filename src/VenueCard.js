@@ -23,9 +23,9 @@ class VenueCard extends Component {
   }
 
   handleClick = (id) => {
-    let foundMarker = this.props.markers.find(marker => marker.id === id);
+    let matchingMarker = this.props.markers.find(marker => marker.id === id);
 
-    window.google.maps.event.trigger(foundMarker, 'click');
+    window.google.maps.event.trigger(matchingMarker, 'click');
   }
   
   render() {

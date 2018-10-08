@@ -35,7 +35,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   text-align: right;
-  color: #F7FFF7;
+  color: #FAFAF9;
   order: 2;
 }
 
@@ -69,6 +69,7 @@ body {
   position: absolute;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 300px;
   max-width: 100%;
   padding: 1rem;
@@ -79,6 +80,52 @@ body {
   margin-bottom: 50px;
 }
 
+.sidebar-upper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sidebar-about {
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+
+.sidebar-about p {
+  padding-bottom: 1rem;
+}
+
+.info-button {
+  margin: auto;
+  padding: 1rem 0.5rem;
+  background: #FF6B6B;
+  border-radius: 2px;
+  font-size: 1rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #F7FFF7;
+  letter-spacing: 0.1rem;
+  border: #FF6B6B;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.14), 
+              4px 4px 12px 0 rgba(0, 0, 0, 0.12);
+}
+
+.info-button:hover {
+  background: #4ECDC4;
+  border: #4ECDC4;
+  color: #184C54;
+}
+
+.input {
+  margin: 1rem auto;
+  padding: 0 0.5rem;
+  width: 268px;
+  font-size: 1rem;
+  line-height: 1.7rem;
+}
+
 .venue-list {
   margin: auto;
 }
@@ -86,10 +133,11 @@ body {
 .venue-item {}
 
 .venue-card {
-  background: #4ECDC4;
+  background: #184C54;
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 2px;
+  color: #F7FFF7;
 }
 
 .venue-card:first-child {
@@ -110,7 +158,7 @@ body {
 .vc-name a:hover {
   cursor: pointer;
   text-decoration: none;
-  color:  #F7FFF7;
+  color:  #4ECDC4;
 }
 
 .vc-category {
@@ -128,7 +176,7 @@ body {
 }
 
 .vc-address {
-
+  margin: 0.5rem 0;
 }
 
 .filter-button {}
