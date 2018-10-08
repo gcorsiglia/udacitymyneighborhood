@@ -22,9 +22,9 @@ class SideBar extends Component {
       const marker = this.props.markers.find(marker => marker.id === v.venue.id);
 
       if (isMatched) {
-        marker.isVisible = true;
+        marker.visible = true;
       } else {
-        marker.isVisible = false;
+        marker.visible = false;
       }
     });
   }
