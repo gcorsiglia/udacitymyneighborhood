@@ -13,8 +13,8 @@ class SideBar extends Component {
     }
   }
 
-  handleChange = (query) => {
-    this.setState({ query });
+  filterVenues = (query) => {
+    this.setState({ query })
     
     this.props.venues.map((v) => {
       const isMatched = v.venue.name.toLowerCase().includes(query.toLowerCase());
@@ -22,10 +22,12 @@ class SideBar extends Component {
       const marker = this.props.markers.find(marker => marker.id === v.venue.id);
 
       if (isMatched) {
-        marker.visible = true;
+        marker.setVisible(true);
       } else {
-        marker.visible = false;
+        marker.setVisible(false);
       }
+
+      return marker;
     });
   }
 
@@ -46,7 +48,7 @@ class SideBar extends Component {
 	    				title="search"
 	    				type="text"
 	    				aria-labelledby="aria-input-description"
-	    				onChange={(event) => this.handleChange(event.target.value)}
+	    				onChange={(event) => this.filterVenues(event.target.value)}
 	    			/>
 	    			<label id="aria-input-description" className="hide-element">Search for places in Port Townsend</label>
 
