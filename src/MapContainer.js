@@ -36,7 +36,10 @@ class MapContainer extends Component {
             venues: results
           }, this.renderMap()) // Render map only after venues are loaded
         })
-        .catch(error => console.log('Foursquare API error! ', error));
+        .catch(error => {
+          console.log('Foursquare API error! ', error);
+          alert('Foursquare failed to load. Please refresh the page.')
+        });
   }
 
   initMap = () => {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import VenueCard from './VenueCard';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 class SideBar extends Component {
 
 	constructor(props) {
@@ -44,6 +42,8 @@ class SideBar extends Component {
   }
 
   render() {
+
+    let filtered = this.state.query ? this.state.searchResults : this.props.venues;
 		
     return (
 
@@ -63,20 +63,12 @@ class SideBar extends Component {
 	    				onChange={(event) => this.filterVenues(event.target.value)}
 	    			/>
 	    			<label id="aria-input-description" className="hide-element">Search for places in Port Townsend</label>
-
-	    			<button className="filter-button" id="filterButton" type="submit" title="filter">
-							<FontAwesomeIcon
-						    icon="search"
-						    className="icon"
-						    size="lg"
-						  />
-	    			</button>
 	    		</form>
     		</div>
 
     		<div className="venues-list" id="venuesList">
     			<ul className="venue-list">
-						{this.state.query && this.state.searchResults.map((venueItem) => {
+						{filtered.map((venueItem) => {
 							return (
 								<li key={venueItem.venue.id} className="list-item">
 									<VenueCard 
