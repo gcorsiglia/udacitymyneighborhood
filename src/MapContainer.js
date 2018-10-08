@@ -68,13 +68,22 @@ class MapContainer extends Component {
         },
         map: map,
         title: venueItem.venue.name,
-        id: venueItem.venue.id
-      })
+        id: venueItem.venue.id,
+        animation: window.google.maps.Animation.DROP
+      });
 
       marker.addListener('click', () => {
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(window.google.maps.Animation.BOUNCE);
+        }
+
+        setTimeout(() => { marker.setAnimation(null) }, 1750);
+
         infowindow.setContent(contentString);
         infowindow.open(map, marker);
-      })
+      });
 
       this.props.addMarker(marker);
     });   
