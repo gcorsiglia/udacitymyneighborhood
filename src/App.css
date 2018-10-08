@@ -20,7 +20,7 @@ body {
 
 /* HEADER + NAV */
 .header {
-  background: #1A535C;
+  background: #184C54;
   margin: 0;
   padding: 1rem;
   font-size: 1.9rem;
@@ -99,6 +99,18 @@ body {
 .vc-name {
   font-size: 1.2rem;
   line-height: 1.5rem;
+  letter-spacing: 0.05rem;
+}
+
+.vc-name a {
+  color: #FFE66D;
+  text-decoration: underline;
+}
+
+.vc-name a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color:  #F7FFF7;
 }
 
 .vc-category {
@@ -125,7 +137,7 @@ body {
   position: fixed;
   bottom: 0;
   z-index: 100;
-  background: #1A535C;
+  background: #184C54;
   width: 100%;
   height: 50px;
   color: #F7FFF7;

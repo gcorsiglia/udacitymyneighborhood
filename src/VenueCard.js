@@ -21,6 +21,12 @@ class VenueCard extends Component {
 
     return (baseStreetview + searchParams);
   }
+
+  handleClick = (id) => {
+    let foundMarker = this.props.markers.find(marker => marker.id === id);
+
+    window.google.maps.event.trigger(foundMarker, 'click');
+  }
   
   render() {
 		
@@ -28,7 +34,10 @@ class VenueCard extends Component {
 
     return (
     	<div className="venue-card box-shadow">
-    		<h2 className="vc-name">{venueDetails.venue.name}</h2>
+    		<h2 className="vc-name">
+          <a onClick={() => {this.handleClick(venueDetails.venue.id)}}>
+            {venueDetails.venue.name}</a>
+        </h2>
     		
     		<p className="vc-category">{venueDetails.venue.categories[0].name}</p>
     		
@@ -45,7 +54,7 @@ class VenueCard extends Component {
 	        	<p>{venueDetails.venue.location.formattedAddress[1]}</p>
 	        </div>
 	        
-	        <p>{venueDetails.venue.hereNow.summary}</p>	
+	        <p>Who's here: {venueDetails.venue.hereNow.summary}</p>	
       </div>
     );
   }

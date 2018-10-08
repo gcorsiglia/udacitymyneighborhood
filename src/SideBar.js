@@ -11,10 +11,12 @@ class SideBar extends Component {
       searchResults: []
     }
   }
-
+  
+  // Filter markers based on user input
   filterVenues = (query) => {
     this.setState({ query })
     
+    // Set marker visibility
     this.props.venues.map((v) => {
       const isMatched = v.venue.name.toLowerCase().includes(query.toLowerCase());
 
@@ -31,7 +33,8 @@ class SideBar extends Component {
 
     this.updateResults(query);
   }
-
+  
+  // Filter venue list based on user input
   updateResults = (query) => {
     if (query) {
       const searchResults = this.props.venues.filter((v) => v.venue.name.toLowerCase().includes(query.toLowerCase()));
@@ -42,7 +45,8 @@ class SideBar extends Component {
   }
 
   render() {
-
+    
+    // Check for user input to display all venues by default
     let filtered = this.state.query ? this.state.searchResults : this.props.venues;
 		
     return (
@@ -73,6 +77,7 @@ class SideBar extends Component {
 								<li key={venueItem.venue.id} className="list-item">
 									<VenueCard 
 										venueDetails={venueItem}
+                    markers={this.props.markers}
 									/>
 								</li>
 								)
