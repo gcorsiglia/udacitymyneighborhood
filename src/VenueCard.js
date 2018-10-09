@@ -26,6 +26,10 @@ class VenueCard extends Component {
     let matchingMarker = this.props.markers.find(marker => marker.id === id);
 
     window.google.maps.event.trigger(matchingMarker, 'click');
+
+    if(window.innerWidth < 769) {
+      this.props.toggleSidebar();
+    }
   }
   
   render() {
