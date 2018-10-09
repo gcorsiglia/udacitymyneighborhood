@@ -21,7 +21,7 @@ class HeaderNav extends Component {
           icon="times"
           className="icon"
           size="lg"
-          aria-label="close menu"
+          aria-label="close"
         />
     } else {
       navIcon = 
@@ -29,7 +29,7 @@ class HeaderNav extends Component {
         icon="bars"
         className="icon"
         size="lg"
-        aria-label="open menu"
+        aria-label="open"
       />
     }
 
@@ -42,7 +42,9 @@ class HeaderNav extends Component {
           onClick={() => { this.props.toggleSidebar() }}
           onKeyPress={this.handleKeyMenu}
         >
-          {navIcon}
+          <button aria-expanded={this.props.sidebarIsOpen} aria-label="menu">
+            {navIcon}
+          </button>
         </nav>
       </header>
     );

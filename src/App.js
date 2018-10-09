@@ -16,9 +16,9 @@ class App extends Component {
     super(props);
 
     this.state = {
-      venues: [], 
-      sidebarIsOpen: true,
-      markers: []
+      venues: [],
+      markers: [],
+      sidebarIsOpen: true
     }
   }
   

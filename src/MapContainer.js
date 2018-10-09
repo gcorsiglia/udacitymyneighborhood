@@ -126,7 +126,7 @@ class MapContainer extends Component {
       <section id="mapContainer">
         <div id="map" role="application" aria-labelledby="aria-map-description" tabIndex="-1"></div>
 
-        <label id="aria-map-description" className="hide-element">Google Maps application</label>
+        <label id="aria-map-description" className="hide-element">Google Maps application showing places in Port Townsend, WA</label>
       </section>
     )
   }

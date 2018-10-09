@@ -58,11 +58,11 @@ class SideBar extends Component {
           </div>
     			
 	    		<input 
-	    			className="input" 
-	    			id="filterInput" 
-	    			name="search" 
+	    			className="input"
+	    			name="Search" 
 	    			placeholder="Search for places in Port Townsend" 
-	    			title="search"
+	    			title="Search"
+            role="search"
 	    			type="text"
 	    			aria-labelledby="aria-input-description"
             tabIndex="0"
