@@ -17,7 +17,7 @@ class App extends Component {
 
     this.state = {
       venues: [], 
-      sidebarIsOpen: false,
+      sidebarIsOpen: true,
       markers: []
     }
   }
@@ -44,6 +44,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        
         <HeaderNav 
           sidebarIsOpen={this.state.sidebarIsOpen}
           toggleSidebar={this.toggleSidebar}
@@ -53,9 +54,8 @@ class App extends Component {
           <SideBar
             venues={this.state.venues}
             markers={this.state.markers}
-            filter={this.filterQuery}
             displaySidebar={displaySidebar}
-            filterQuery={this.filterQuery}
+            toggleSidebar={this.toggleSidebar}
           />
           
           <MapContainer
@@ -65,13 +65,20 @@ class App extends Component {
             addMarker={this.addMarker}
           />
         </main>
+        
         <footer className="footer">
-          <p>PT PLACES</p>
-          <p>© 2018 Gina L. Corsiglia</p>
-          
-        </footer>
-    </div> 
+          <div className="footer-right">
+            <p>ATTRIBUTIONS</p>
+            <p>Map created with <a href="https://cloud.google.com/maps-platform/">Google Maps API</a> and 
+              places data fetched with the <a href="https://developer.foursquare.com/">Foursquare API</a>.</p>
+          </div>
 
+          <div className="footer-left">
+            <p>PORT TOWNSEND PLACES</p>
+            <p>© 2018 Gina L. Corsiglia</p>
+          </div>
+        </footer>
+      </div> 
     );
   }
 }
