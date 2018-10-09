@@ -54,12 +54,9 @@ class SideBar extends Component {
     	<section id="sidebar" className="sidebar" style={{ display: this.props.displaySidebar }}>
     		<div className="sidebar-upper">
           <div className="sidebar-about">
-            <p>Port Townsend is a historic town on the tip of the Olympic Peninsula in Washington State.</p>
-            <p>Click the button to learn more about this Victorian city by the sea. Or use the search field to explore the places of PT.</p>
+            <p>Port Townsend is a historic Victorian town on the tip of the Olympic Peninsula in Washington State.</p>
           </div>
     			
-    			<button className="info-button" id="infoButton">About PT</button>
-			
 	    		<input 
 	    			className="input" 
 	    			id="filterInput" 
@@ -81,6 +78,7 @@ class SideBar extends Component {
 									<VenueCard 
 										venueDetails={venueItem}
                     markers={this.props.markers}
+                    toggleSidebar={this.props.toggleSidebar}
 									/>
 								</li>
 								)
