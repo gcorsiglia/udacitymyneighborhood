@@ -13,6 +13,7 @@ class HeaderNav extends Component {
           icon="times"
           className="icon"
           size="lg"
+          aria-label="close menu"
         />
     } else {
       navIcon = 
@@ -20,6 +21,7 @@ class HeaderNav extends Component {
         icon="bars"
         className="icon"
         size="lg"
+        aria-label="open menu"
       />
     }
 
