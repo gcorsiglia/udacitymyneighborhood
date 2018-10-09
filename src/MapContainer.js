@@ -89,7 +89,11 @@ class MapContainer extends Component {
       });
 
       this.props.addMarker(marker);
-    });   
+    });
+
+    map.addListener('click', () => {
+      infowindow.close();
+    }); 
   }
 
   // Insert Google Maps API script into DOM
