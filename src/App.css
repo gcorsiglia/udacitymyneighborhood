@@ -160,8 +160,6 @@ body {
   margin: 0.5rem 0;
 }
 
-.filter-button {}
-
 .footer {
   position: fixed;
   z-index: 100;
@@ -215,4 +213,26 @@ body {
 .box-shadow {
   box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.14), 
               4px 4px 12px 0 rgba(0, 0, 0, 0.12);
+}
+
+@media screen and (max-width: 600px) {
+  .header .title {
+    font-size: 1.3rem;
+  }
+
+  .footer {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .footer .footer-left {
+    order: 2;
+    text-align: center;
+  }
+
+  .footer .footer-right {
+    order: 1;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
 }
