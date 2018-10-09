@@ -3,6 +3,14 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class HeaderNav extends Component {
+  
+  // Handle key press
+  handleKeyMenu = (e) => {
+    let key = e.keyCode || e.which;
+    if (key === 13) {
+      this.props.toggleSidebar();
+    }
+  }
 
   render() {
 
@@ -29,10 +37,12 @@ class HeaderNav extends Component {
       <header className="header">
         <h1 className="title">Port Townsend Places</h1>
 
-        <nav tabindex="0">
-          <a onClick={() => { this.props.toggleSidebar() }}>
-            {navIcon}
-          </a>
+        <nav 
+          tabIndex="0"
+          onClick={() => { this.props.toggleSidebar() }}
+          onKeyPress={this.handleKeyMenu}
+        >
+          {navIcon}
         </nav>
       </header>
     );

@@ -55,7 +55,7 @@ class MapContainer extends Component {
     this.props.venues.forEach(venueItem => {
       
       const contentString = 
-        `<div class="iw-venue-details-content">
+        `<div class="iw-venue-details-content" tabIndex="0">
           <h3 class="iw-venue-name">${venueItem.venue.name}</h3>
           <p class="iw-venue-address">${venueItem.venue.location.formattedAddress[0]}</p>
           <p class="iw-venue-address">${venueItem.venue.location.formattedAddress[1]}</p>
@@ -73,14 +73,14 @@ class MapContainer extends Component {
       });
 
       marker.addListener('click', () => {
+        // Marker animation
         if (marker.getAnimation() !== null) {
           marker.setAnimation(null);
         } else {
           marker.setAnimation(window.google.maps.Animation.BOUNCE);
         }
-
         setTimeout(() => { marker.setAnimation(null) }, 1750);
-
+        
         infowindow.setContent(contentString);
         map.setZoom(15);
         map.setCenter(marker.position);
@@ -90,7 +90,8 @@ class MapContainer extends Component {
 
       this.props.addMarker(marker);
     });
-
+    
+    // Close infowindow when map clicked
     map.addListener('click', () => {
       infowindow.close();
     }); 
@@ -123,7 +124,7 @@ class MapContainer extends Component {
   render() {
     return (
       <section id="mapContainer">
-        <div id="map" role="application" aria-labelledby="aria-map-description" tabindex="-1"></div>
+        <div id="map" role="application" aria-labelledby="aria-map-description" tabIndex="-1"></div>
 
         <label id="aria-map-description" className="hide-element">Google Maps application</label>
       </section>

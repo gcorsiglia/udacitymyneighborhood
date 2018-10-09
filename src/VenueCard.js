@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class VenueCard extends Component {
-	
+  	
 	// Get street view image
 	getStreetviewImage = (venue) => {
     
@@ -31,6 +31,14 @@ class VenueCard extends Component {
       this.props.toggleSidebar();
     }
   }
+
+  // Handle key press
+  handleKeyVenue = (e, id) => {
+    let key = e.keyCode || e.which;
+    if (key === 13) {
+      this.handleClick(id);
+    }
+  }
   
   render() {
 		
@@ -38,9 +46,14 @@ class VenueCard extends Component {
 
     return (
     	<div className="venue-card box-shadow">
-    		<h2 className="vc-name" tabindex="0">
+    		<h2 
+          className="vc-name"
+          tabIndex="0"
+          onKeyPress={(e) => {this.handleKeyVenue(e, venueDetails.venue.id)}}
+        >
           <a onClick={() => {this.handleClick(venueDetails.venue.id)}}>
-            {venueDetails.venue.name}</a>
+            {venueDetails.venue.name}
+          </a>
         </h2>
     		
     		<p className="vc-category">{venueDetails.venue.categories[0].name}</p>
