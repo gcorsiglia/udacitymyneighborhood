@@ -22,6 +22,9 @@ body {
 .header {
   background: #184C54;
   margin: 0;
+  top: 0;
+  right: 0;
+  left: 0;
   padding: 1rem;
   font-size: 1.9rem;
   display: flex;
@@ -164,12 +167,13 @@ body {
   z-index: 100;
   margin: 0;
   bottom: 0;
-  width: 100%;
+  right: 0;
+  left: 0;
   background: #184C54;
   color: #F7FFF7;
   font-size: 0.8rem;
   line-height: 1rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
