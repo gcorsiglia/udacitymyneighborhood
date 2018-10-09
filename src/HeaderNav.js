@@ -29,7 +29,7 @@ class HeaderNav extends Component {
       <header className="header">
         <h1 className="title">Port Townsend Places</h1>
 
-        <nav>
+        <nav tabindex="0">
           <a onClick={() => { this.props.toggleSidebar() }}>
             {navIcon}
           </a>

@@ -38,7 +38,7 @@ class VenueCard extends Component {
 
     return (
     	<div className="venue-card box-shadow">
-    		<h2 className="vc-name">
+    		<h2 className="vc-name" tabindex="0">
           <a onClick={() => {this.handleClick(venueDetails.venue.id)}}>
             {venueDetails.venue.name}</a>
         </h2>

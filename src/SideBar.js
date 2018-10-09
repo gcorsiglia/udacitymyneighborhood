@@ -65,6 +65,7 @@ class SideBar extends Component {
 	    			title="search"
 	    			type="text"
 	    			aria-labelledby="aria-input-description"
+            tabindex="0"
 	    			onChange={(event) => this.filterVenues(event.target.value)}
 	    			/>
 	    		<label id="aria-input-description" className="hide-element">Search for places in Port Townsend, WA</label>

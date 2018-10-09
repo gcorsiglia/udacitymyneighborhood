@@ -119,7 +119,7 @@ class MapContainer extends Component {
   render() {
     return (
       <section id="mapContainer">
-        <div id="map" role="application" aria-labelledby="aria-map-description"></div>
+        <div id="map" role="application" aria-labelledby="aria-map-description" tabindex="-1"></div>
 
         <label id="aria-map-description" className="hide-element">Google Maps application</label>
       </section>
