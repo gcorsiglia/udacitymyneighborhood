@@ -20,6 +20,8 @@ This project was bootstrapped with Create React App. The app utilizes Google Map
 * [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial)
 * [FourSquare API](https://developer.foursquare.com/)
 * [Google Street View API](https://developers.google.com/maps/documentation/streetview/intro)
+* [Font Awesome Icons](https://fontawesome.com/icons)
+* [Google Fonts](https://fonts.google.com/)
 
 ## Project Features
 * Responsive, mobile-first design
