@@ -45,8 +45,8 @@ class MapContainer extends Component {
   initMap = () => {
     // Create map
     const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: {lat: 48.115501, lng: -122.775156},
-      zoom: 13
+      center: { lat: this.props.venues[0].venue.location.lat, lng: this.props.venues[0].venue.location.lng },
+      zoom: 12
     });
 
     const infowindow = new window.google.maps.InfoWindow();
@@ -82,7 +82,10 @@ class MapContainer extends Component {
         setTimeout(() => { marker.setAnimation(null) }, 1750);
 
         infowindow.setContent(contentString);
+        map.setZoom(15);
+        map.setCenter(marker.position);
         infowindow.open(map, marker);
+        map.panBy(0, -125);
       });
 
       this.props.addMarker(marker);
