@@ -67,10 +67,10 @@ class SideBar extends Component {
     		</div>
 
     		<div className="venues-list" id="venuesList" role="listbox">
-    			<ul className="venue-list" role="list">
+    			<ul className="venue-list">
 						{filtered.map((venueItem) => {
 							return (
-								<li key={venueItem.venue.id} className="list-item" role="listitem">
+								<li key={venueItem.venue.id} className="list-item">
 									<VenueCard 
 										venueDetails={venueItem}
                     markers={this.props.markers}

@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 
 class MapContainer extends Component {
   
+  gm_authFailure(){
+    window.alert("Google Maps error!")
+  }
+
   // Get venues based on query
   componentDidMount() {
     this.getVenues();
+    window.gm_authFailure = this.gm_authFailure;
   }
   
   // Get venues with Foursquare API 
@@ -104,11 +109,11 @@ class MapContainer extends Component {
     
     if (typeof google === 'undefined') {
       script.src = url;
+      script.onerror = () => {window.alert("Google Maps API failed to load data!")};
       script.async = true;
       script.defer = true;
       index.parentNode.insertBefore(script, index);
 
-      // Connect initMap() to global window so Google Maps API can use it
       window.initMap = this.initMap;
     } 
   }
