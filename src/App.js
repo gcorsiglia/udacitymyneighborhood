@@ -22,12 +22,10 @@ class App extends Component {
     }
   }
   
-  // Update venues state with props from child
   newVenues = (venues) => {
     this.setState({ venues });
   }
 
-  // Push new marker to state with props from child
   addMarker = (marker) => {
     this.state.markers.push(marker);
   }

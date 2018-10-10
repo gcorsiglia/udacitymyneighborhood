@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class HeaderNav extends Component {
   
-  // Handle key press
   handleKeyMenu = (e) => {
     let key = e.keyCode || e.which;
     if (key === 13) {

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 class VenueCard extends Component {
-  	
-	// Get street view image
+
 	getStreetviewImage = (venue) => {
     
     const baseStreetview = 'https://maps.googleapis.com/maps/api/streetview?'
@@ -16,7 +15,6 @@ class VenueCard extends Component {
       radius: '200'
     }
     
-    // Convert params into URL
     const searchParams = Object.keys(params).map(k => `${k}=${params[k]}`).join('&');
 
     return (baseStreetview + searchParams);
@@ -32,7 +30,6 @@ class VenueCard extends Component {
     }
   }
 
-  // Handle key press
   handleKeyVenue = (e, id) => {
     let key = e.keyCode || e.which;
     if (key === 13) {
@@ -71,7 +68,7 @@ class VenueCard extends Component {
 	        	<p>{venueDetails.venue.location.formattedAddress[1]}</p>
 	        </div>
 	        
-	        <p>Who's here: {venueDetails.venue.hereNow.summary}</p>	
+	        <p>Who's here: {venueDetails.venue.hereNow.summary}</p>
       </div>
     );
   }

@@ -107,7 +107,7 @@ button {
 .input {
   margin: 1rem auto;
   padding: 0 0.5rem;
-  width: 268px;
+  width: 100%;
   font-size: 1rem;
   line-height: 1.7rem;
   border: 1px solid #184C54;

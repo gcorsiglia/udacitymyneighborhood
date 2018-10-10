@@ -14,9 +14,8 @@ class SideBar extends Component {
   
   // Filter markers based on user input
   filterVenues = (query) => {
-    this.setState({ query })
-    
-    // Set marker visibility
+    this.setState({ query });
+
     this.props.venues.map((v) => {
       const isMatched = v.venue.name.toLowerCase().includes(query.toLowerCase());
 
@@ -46,24 +45,20 @@ class SideBar extends Component {
 
   render() {
     
-    // Check for user input to display all venues by default
     let filtered = this.state.query ? this.state.searchResults : this.props.venues;
 		
     return (
 
-    	<section id="sidebar" className="sidebar" style={{ display: this.props.displaySidebar }}>
+    	<section className="sidebar" style={{ display: this.props.displaySidebar }}>
     		<div className="sidebar-upper">
-          <div className="sidebar-about">
-            <p>Port Townsend is a historic Victorian town on the tip of the Olympic Peninsula in Washington State.</p>
-          </div>
+          <p className="sidebar-about">Port Townsend is a historic Victorian town on the tip of the Olympic Peninsula in Washington State.</p>
     			
 	    		<input 
 	    			className="input"
-	    			name="Search" 
+	    			name="Search"
 	    			placeholder="Search for places in Port Townsend" 
 	    			title="Search"
-            role="search"
-	    			type="text"
+	    			type="search"
 	    			aria-labelledby="aria-input-description"
             tabIndex="0"
 	    			onChange={(event) => this.filterVenues(event.target.value)}
@@ -71,11 +66,11 @@ class SideBar extends Component {
 	    		<label id="aria-input-description" className="hide-element">Search for places in Port Townsend, WA</label>
     		</div>
 
-    		<div className="venues-list" id="venuesList">
-    			<ul className="venue-list">
+    		<div className="venues-list" id="venuesList" role="listbox">
+    			<ul className="venue-list" role="list">
 						{filtered.map((venueItem) => {
 							return (
-								<li key={venueItem.venue.id} className="list-item">
+								<li key={venueItem.venue.id} className="list-item" role="listitem">
 									<VenueCard 
 										venueDetails={venueItem}
                     markers={this.props.markers}
