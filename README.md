@@ -11,7 +11,13 @@ This project was bootstrapped with Create React App. The app utilizes Google Map
 * open terminal and change directory into project root
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
-* open browser to localhost:3000
+* navigate to `localhost:3000`
+
+Note: The service worker is implemented only in the production build. To view the app with service worker:
+
+* `npm run build`
+* `serve -s build`
+* navigate to `localhost:5000`
 
 ## Dependencies
 
