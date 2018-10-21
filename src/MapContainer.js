@@ -18,8 +18,8 @@ class MapContainer extends Component {
     // Set search param
     const endpoint = new URL('https://api.foursquare.com/v2/venues/explore?')
     const params = {
-      client_id: 'D44WA1DU2RWYEEAKMRPLLYUX22001UY3EU3MQ1ZEADN433ZK',
-      client_secret: '3WK2RKHNWYOPX5CLRFRUFWTLY5Y31A2Q3EIXE1ES1EXDTFAK',
+      client_id: '<INSERT_ID_HERE>',
+      client_secret: '<INSERT_SECRET_HERE>',
       v: '20180323',
       near: 'Port Townsend, WA'
     }
@@ -120,7 +120,7 @@ class MapContainer extends Component {
 
   renderMap = () => {
     if (typeof google === 'undefined') {
-      this.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAV1AdfYz-I6GLGa5tFsJV3mpnc8pVeiVY&callback=initMap');
+      this.loadScript('<INSERT_KEY_HERE>');
     } else {
       this.initMap()
     }
